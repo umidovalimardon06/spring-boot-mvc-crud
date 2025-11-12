@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Management</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #121212;
+            color: #e0e0e0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: #ffffff;
+            letter-spacing: 1.2px;
+        }
+
+        main {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .card {
+            background-color: #1e1e1e;
+            border-radius: 12px;
+            padding: 50px 70px;
+            box-shadow: 0 12px 24px rgba(0,0,0,0.7);
+            text-align: center;
+            max-width: 500px;
+            width: 90%;
+            border: 2px solid #444; /* subtle border instead of blue */
+        }
+
+        .card h2 {
+            color: #ffffff;
+            margin-bottom: 25px;
+            font-size: 2rem;
+        }
+
+        .card p {
+            font-size: 1.1rem;
+            color: #b0b0b0;
+        }
+
+        .card a {
+            display: inline-block;
+            margin: 15px 10px 0 10px;
+            padding: 12px 30px;
+            text-decoration: none;
+            color: #ffffff;
+            background-color: #333; /* dark masculine button */
+            border-radius: 6px;
+            font-weight: 700;
+            transition: 0.3s ease;
+            letter-spacing: 0.5px;
+        }
+
+        .card a:hover {
+            background-color: #555;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.8);
+        }
+
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Student Management</h1>
+</header>
+
+<main>
+    <div class="card">
+        <h2>Welcome</h2>
+        <p>Manage all your students efficiently and professionally.</p>
+        <a th:href="@{/new}">Create Student</a>
+        <a th:href="@{/showall}">Students</a>
+    </div>
+</main>
+
+</body>
+</html>

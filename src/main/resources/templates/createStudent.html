@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Student</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #121212;
+            color: #e0e0e0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        header {
+            padding: 20px 0;
+            text-align: center;
+        }
+        header h1 { margin: 0; font-size: 2rem; font-weight: 800; }
+        main { flex: 1; display: flex; justify-content: center; align-items: center; }
+        .form-card {
+            background-color: #1e1e1e;
+            border-radius: 12px;
+            padding: 40px 60px;
+            box-shadow: 0 12px 24px rgba(0,0,0,0.7);
+            max-width: 500px;
+            width: 100%;
+            border: 2px solid #444;
+        }
+        .form-card h2 { color: #ffffff; margin-bottom: 25px; font-size: 1.8rem; text-align: center; }
+        .form-card label { display: block; margin: 15px 0 5px 0; font-weight: 600; color: #b0b0b0; }
+        .form-card input, .form-card select {
+            width: 100%; padding: 10px; border-radius: 6px; border: 1px solid #555;
+            background-color: #2a2a2a; color: #ffffff; font-size: 1rem;
+        }
+        .form-card button {
+            margin-top: 25px; padding: 12px 30px; width: 100%; border: none;
+            border-radius: 6px; background-color: #333; color: #fff;
+            font-weight: 700; cursor: pointer; transition: 0.3s ease;
+        }
+        .form-card button:hover { background-color: #555; }
+        .form-card .message { margin-top: 15px; text-align: center; color: #0f0; font-weight: 600; }
+        a.back-link { display: block; margin-top: 20px; text-align: center; color: #e0e0e0; text-decoration: none; }
+        a.back-link:hover { color: #fff; }
+    </style>
+</head>
+<body>
+<header>
+    <h1>Create Student</h1>
+</header>
+<main>
+    <div class="form-card">
+        <h2>Student Info</h2>
+        <form th:action="@{/create}" th:object="${student}" method="post">
+            <label for="fullName">Full Name</label>
+            <input type="text" id="fullName" th:field="*{fullName}" placeholder="Enter full name" required>
+
+            <label for="age">Age</label>
+            <input type="number" id="age" th:field="*{age}" placeholder="Enter age" required>
+
+            <label for="gender">Gender</label>
+            <select id="gender" th:field="*{gender}" required>
+                <option value="" disabled selected>Select gender</option>
+                <option th:value="MALE">Male</option>
+                <option th:value="FEMALE">Female</option>
+            </select>
+
+            <button type="submit">Create Student</button>
+        </form>
+
+        <div class="message" th:if="${message}" th:text="${message}"></div>
+
+        <a th:href="@{/showall}" class="back-link">← Back to All Students</a>
+    </div>
+</main>
+</body>
+</html>

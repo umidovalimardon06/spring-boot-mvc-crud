@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>All Students</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #121212;
+            color: #e0e0e0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2rem;
+            font-weight: 800;
+        }
+
+        main {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 30px;
+        }
+
+        .table-card {
+            background-color: #1e1e1e;
+            border-radius: 12px;
+            padding: 30px;
+            max-width: 800px;
+            width: 100%;
+            box-shadow: 0 12px 24px rgba(0,0,0,0.7);
+            border: 2px solid #444;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #2a2a2a;
+            font-weight: 700;
+            color: #ffffff;
+        }
+
+        td {
+            background-color: #1e1e1e;
+            color: #e0e0e0;
+        }
+
+        tr:nth-child(even) td {
+            background-color: #2a2a2a;
+        }
+
+        a.action-link {
+            color: #0f0;
+            text-decoration: none;
+            font-weight: 600;
+            margin: 0 5px;
+        }
+
+        a.action-link:hover {
+            color: #0c0;
+        }
+
+        a.add-link {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 20px;
+            background-color: #333;
+            color: #fff;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        a.add-link:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <h1>All Students</h1>
+</header>
+<main>
+    <div class="table-card">
+        <a th:href="@{/new}" class="add-link">+ Add New Student</a>
+        <table>
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Full Name</th>
+                <th>Age</th>
+                <th>Gender</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="student : ${students}">
+                <td th:text="${student.id}">1</td>
+                <td th:text="${student.fullName}">John Doe</td>
+                <td th:text="${student.age}">20</td>
+                <td th:text="${student.gender}">MALE</td>
+                <td>
+                    <a th:href="@{'/edit/' + ${student.id}}" class="action-link">Edit</a>
+                    <a th:href="@{'/delete/' + ${student.id}}" class="action-link">Delete</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</main>
+</body>
+</html>
